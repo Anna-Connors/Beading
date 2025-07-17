@@ -10,8 +10,9 @@ export function useGridManagement() {
 
   //undo setup
   //set up history array to store grid values as they change
-  const gridHistory = ref<string[][]>([])
-  const currentHistoryIndex = ref<number>(-1)
+  //commenting out in favor of a cleaner erase ability but keeping code for future ideas
+  //const gridHistory = ref<string[][]>([])
+  //const currentHistoryIndex = ref<number>(-1)
 
   //grid operations
   //initialize grid with white cells
@@ -28,12 +29,13 @@ export function useGridManagement() {
     initializeGrid()
 
     //clear history
-    gridHistory.value = []
-    currentHistoryIndex.value = -1
+    //gridHistory.value = []
+    //currentHistoryIndex.value = -1
 
     console.log('grid has been cleared')
   }
 
+  /*
   const saveToHistory = () => {
     //remove future history
     if (currentHistoryIndex.value < gridHistory.value.length - 1) {
@@ -56,9 +58,10 @@ export function useGridManagement() {
     if (gridHistory.value.length > 20) {
       gridHistory.value.shift()
     }
-  }
+  } */
 
   //undo function
+  /*
   const undo = () => {
     //confirm there is a grid history
     if (currentHistoryIndex.value > 0) {
@@ -69,15 +72,16 @@ export function useGridManagement() {
       console.log('Nothing to undo')
     }
   }
+    */
 
   //check if undo is avialable
-  const canUndo = computed(() => currentHistoryIndex.value > 0)
+  //const canUndo = computed(() => currentHistoryIndex.value > 0)
 
   //initialize grid when page loads
   initializeGrid()
   //initialize empty history array when page loads
-  gridHistory.value = []
-  currentHistoryIndex.value = -1
+  //gridHistory.value = []
+  //currentHistoryIndex.value = -1
 
   return {
     //Grid
@@ -88,10 +92,10 @@ export function useGridManagement() {
     initializeGrid,
     clearGrid,
     //history/undo
-    gridHistory,
-    currentHistoryIndex,
-    saveToHistory,
-    undo,
-    canUndo,
+    //gridHistory,
+    //currentHistoryIndex,
+    //saveToHistory,
+    //undo,
+    //canUndo,
   }
 }

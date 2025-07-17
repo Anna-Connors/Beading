@@ -17,11 +17,11 @@ const {
   cellColors,
   initializeGrid,
   clearGrid,
-  gridHistory,
-  currentHistoryIndex,
-  saveToHistory,
-  undo,
-  canUndo,
+  //gridHistory,
+  //currentHistoryIndex,
+  //saveToHistory,
+  //undo,
+  //canUndo,
 } = useGridManagement()
 
 const { saveAsJPEG, saveAsSVG } = useSavePatterns(rows, columns, cellColors)
@@ -57,7 +57,7 @@ const paintCell = (index: number) => {
   console.log(`Painted cell ${index} with ${selectedColor.value}`)
 
   //save state to history after making changes
-  saveToHistory()
+  //saveToHistory()
 }
 
 //GRID SETUP AND INTERACTIONS
@@ -96,8 +96,12 @@ const paintCell = (index: number) => {
           :style="{ backgroundColor: color }"
           @click="selectedColorIndex = index"
         >
-          <!--add X button to remove colors if more than 1 color present-->
-          <button v-if="colors.length > 1" @click.stop="removeColor(index)" class="remove-color">
+          <!--add X button to remove colors if more than 1 color, besides white, is present-->
+          <button
+            v-if="colors.length > 2 && index != 0"
+            @click.stop="removeColor(index)"
+            class="remove-color"
+          >
             x
           </button>
         </div>
@@ -109,7 +113,7 @@ const paintCell = (index: number) => {
         <button @click="addColor" class="add-color-btn">Add Color</button>
       </div>
 
-      <p>Selected: {{ selectedColor }}</p>
+      <!--<p>Selected: {{ selectedColor }}</p>-->
     </div>
 
     <!-- Display the actual Grid -->
@@ -146,7 +150,6 @@ const paintCell = (index: number) => {
       <button @click="clearGrid" class="grid-btn">Clear Grid</button>
       <button @click="saveAsJPEG" class="grid-btn">Save as JPEG</button>
       <button @click="saveAsSVG" class="grid-btn">Save as SVG</button>
-      <button @click="undo" class="grid-btn">UNDO</button>
     </div>
   </div>
 </template>
