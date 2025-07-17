@@ -3,7 +3,7 @@ import { ref, computed } from 'vue'
 export function useColorPalette() {
   //color system to fill in the cells
   //seed the array for reference on launch
-  const colors = ref<string[]>(['#FFFFFF', '#3727eaff', '#eef609ff', '#0cf24dff'])
+  const colors = ref<string[]>(['#3727eaff', '#eef609ff', '#0cf24dff'])
   const selectedColorIndex = ref<number>(0)
   const selectedColor = computed<string>(() => colors.value[selectedColorIndex.value])
 
