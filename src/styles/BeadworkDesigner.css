@@ -148,8 +148,14 @@ input {
 
 /*if background is dark, make font light*/
 .color-sample span {
-  filter: invert(1) grayscale(1) contrast(9);
-  mix-blend-mode: difference;
+  color: white;
+  font-weight: bold;
+  font-size: 12px;
+  text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
 }
 
 .grid-btn {
